@@ -42,15 +42,30 @@ const getContact = asyncHandler(async (req, res) => {
 // @route PUT /api/contacts/:id
 // @access public
 const updateContact = asyncHandler(async (req, res) => {
-
-    res.status(200).json({message:`Update Contact for ${req.params.id}`});
+    const contact = await Contact.findById(req.params.id);
+    if(!contact){
+        res.status(404);
+        throw new Error("Contact not found");
+    }
+    const updatedContact = await Contact.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true}
+    );
+    res.status(200).json({message:`Update Contact for ${updatedContact}`});
 });
 
 // @desc Delete contact
 // @route DELETE /api/contacts/:id
 // @access public
 const deleteContact = asyncHandler(async(req, res) => {
-    res.status(200).json({message:`Delete Contact for ${req.params.id}`});
+    const contact = await Contact.findById(req.params.id);
+    if(!contact){
+        res.status(404);
+        throw new Error("Contact not found");
+    }
+    await contact.remove();
+    res.status(200).json({contact});
 });
 
 // allow import getContact from another nodejs files
