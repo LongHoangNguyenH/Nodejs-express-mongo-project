@@ -2,7 +2,7 @@
 my contacts-backend api
 
 # Task
-- Create routes
+- Create routes templates
   + getContact
   + getContacts
   + createcontact
