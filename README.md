@@ -1,12 +1,17 @@
 # Nodejs-express-mongo-project
 my contacts-backend api
 
-Connect to MongoDB
-Create model, schema
-Config model
 
-- Config contactController.js
-- add async, await and return request body
-- CRUD Get All Contacts
-- CRUD Create New Contact
-- CRUD Get Contact
+# Task 
+- Connect to Mongodb database
+  + Config
+  + Create Model (contactModel)
+- Build Errorhandler
+  + Validation (file constant.js)
+- Config contactController
+  + CRUD get all contacts
+  + CRUD get contact
+  + CRUD create new contact
+
+
+
