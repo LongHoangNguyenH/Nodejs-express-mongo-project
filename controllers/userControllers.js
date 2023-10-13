@@ -1,8 +1,6 @@
 const asyncHandler = require('express-async-handler');
-const Contact = require('../models/contactModel');
 const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
-const userSchema = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
 
@@ -62,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
                 },
             },
             process.env.ACCESS_TOKEN_SECRET,
-            {expiresIn: '1m'}
+            {expiresIn: '5m'}
         );
         res.status(200).json({accesstoken});
     } else{
@@ -70,7 +68,7 @@ const loginUser = asyncHandler(async (req, res) => {
         throw new Error("email or password are not valid");
 
     }
-    res.json({message:"login user"});
+    res.json({message:"login successful"});
 });
 
 // @desc Current user info
